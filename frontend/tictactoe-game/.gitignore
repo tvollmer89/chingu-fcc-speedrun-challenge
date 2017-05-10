@@ -7,3 +7,6 @@ config.codekit3
 */codekit-config.json
 .codekit-cache
 node_modules
+
+#OSX
+.DS_Store
