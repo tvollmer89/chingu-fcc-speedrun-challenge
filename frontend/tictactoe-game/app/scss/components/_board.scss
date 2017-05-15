@@ -7,12 +7,27 @@
 }
 
 .cell {
+  @include font-size(150px);
+  text-align: center;
   width: 150px;
   height: 150px;
   display: block;
   float: left;
-  color: #EAEAEA;
-  font-size: 6.3em;
   margin: 5px;
   background-color: $teal;
+  &:hover{
+    cursor: default;
+  }
+}
+
+.empty:hover {
+  cursor: pointer;
+  background-color: darken($teal, 10%);
+}
+
+.user {
+  color: $white;
+}
+.comp {
+  color: $coral;
 }
