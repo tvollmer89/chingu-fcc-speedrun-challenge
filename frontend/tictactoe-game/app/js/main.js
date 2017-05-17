@@ -1,7 +1,19 @@
 /*
 Global Variables
  */
-var game, board, playerID, compID, currentPlayer, endMessage;
+var game, playerID, compID, currentPlayer, gameMessage;
+var cMove = 0;
+var board = [0, 0, 0, 0, 0, 0, 0, 0, 0];
+var winCombos = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6]
+];
 
 /**
  *  Begins a new game. Initializes game object and board to blank.
@@ -13,9 +25,12 @@ function newGame(){
     user: '',
     comp: '',
     currentPlayer: '',
-    moves: 1,
+    moves: 0,
+    over: false
   };
-  $('#choiceModal').modal('show');
+  $('#game-message').text(gameMessage);
+
+  $('#choiceModal').modal({backdrop:false, keyboard:false}).modal('show');
 };
 
 // Set player choice
@@ -34,5 +49,6 @@ $('#player-o').on('click', function () {
 });
 
 $(document).ready(function() {
+  gameMessage = "Tic Tac Toe";
   newGame();
 });
