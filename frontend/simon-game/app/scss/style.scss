@@ -1,0 +1,16 @@
+/* Main SCSS File */
+
+/*Helpers*/
+@import "helpers/placeholders";
+@import "helpers/variables";
+@import "helpers/mixins";
+@import "helpers/typography";
+
+/*Components*/
+@import "components/modal";
+
+/*Layout*/
+@import "layout/base";
+@import "layout/header";
+@import "layout/footer";
+@import "layout/nav";
