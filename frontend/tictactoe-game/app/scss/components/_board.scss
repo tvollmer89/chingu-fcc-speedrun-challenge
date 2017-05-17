@@ -1,16 +1,14 @@
 .board {
   background-color: transparent;
-  width: 490px;
-  height: 490px;
+  @include size(490px);
   margin: 50px auto;
   padding: 5px;
 }
 
 .cell {
   @include font-size(150px);
+  @include size(150px);
   text-align: center;
-  width: 150px;
-  height: 150px;
   display: block;
   float: left;
   margin: 5px;
@@ -30,4 +28,17 @@
 }
 .comp {
   color: $coral;
+}
+
+@include media-breakpoint-down(sm) {
+  .board{
+    @include size(490px*0.60);
+    margin: 50px*0.60 auto;
+    padding: 5px*0.60;
+  }
+  .cell {
+    @include font-size(150px*0.60);
+    @include size(150px*0.60);
+    margin: 5px*0.60;
+  }
 }

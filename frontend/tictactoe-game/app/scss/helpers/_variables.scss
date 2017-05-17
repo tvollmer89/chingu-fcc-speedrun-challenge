@@ -35,3 +35,12 @@ $teal: rgba(132, 220, 207, 1);
 
 $body-bg:       $light !default;
 $body-color:    $dark-gray !default;
+
+//Grid from bootstrap
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+) !default;

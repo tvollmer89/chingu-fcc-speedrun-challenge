@@ -1,3 +1,12 @@
 .page-header {
   border-bottom: 1px solid $gray;
 }
+.navbar-header {
+  float: left;
+}
+#navbar {
+  float: right;
+  li {
+    display: inline-block;
+  }
+}
