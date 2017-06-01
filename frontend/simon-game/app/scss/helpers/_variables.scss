@@ -1,9 +1,12 @@
 // Typography
 @import url('https://fonts.googleapis.com/css?family=Abel|Archivo+Narrow|News+Cycle:700');
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P|Teko:700');
 
 $abel: 'Abel', sans-serif;
 $archivoNarrow: 'Archivo Narrow', sans-serif;
 $newsCycle: 'News Cycle', sans-serif;
+$teko: 'Teko', sans-serif;
+$pressStart: 'Press Start 2P', cursive;
 
 $font-style: normal;
 $font-variant: normal;
@@ -28,6 +31,16 @@ $coral: rgba(239, 98, 108, 1);
 $dark-gray: rgba(34, 24, 28, 1);
 $gray: rgba(49, 47, 47, 1);
 $teal: rgba(132, 220, 207, 1);
+
+//Simon Colors
+$green: #0AD61B;
+$yellow: #FCD80F;
+$blue: #0A8CC9;
+$red: #DB0A3B;
+
+//Shapes
+$circle: 50%;
+$rounded-square: 25%;
 
 // Body
 //

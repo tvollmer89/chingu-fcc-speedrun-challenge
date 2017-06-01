@@ -1,0 +1,89 @@
+/** use transform: scale(xx)   */
+.wrapper {
+  position: relative;
+  margin: auto;
+  display: block;
+  @include size(500px);
+  //background-color: $blue;
+}
+
+#game {
+  position: absolute;
+  @include size(100%);
+  background-color: $gray;
+  border-radius: $circle;
+  z-index: 1;
+}
+
+.color-btn {
+  @include size(48%);
+  border: 10px solid $gray;
+  position: absolute;
+  z-index: 10;
+}
+
+.green {
+  background-color: $green;
+  border-radius: 100% 0 0 0;
+  bottom: 50%;
+  right: 50%;
+  border-left-width: 5px;
+  border-top-width: 5px;
+}
+
+.red {
+  background-color: $red;
+  border-radius: 0 100% 0 0;
+  left: 50%;
+  bottom: 50%;
+  border-right-width: 5px;
+  border-top-width: 5px;
+}
+
+.yellow {
+  background-color: $yellow;
+  border-radius: 0 0 0 100%;
+  top: 50%;
+  right: 50%;
+  border-left-width: 5px;
+  border-bottom-width: 5px;
+}
+
+.blue {
+  background-color: $blue;
+  border-radius: 0 0 100% 0;
+  top: 50%;
+  left: 50%;
+  border-right-width: 5px;
+  border-bottom-width: 5px;
+}
+
+.center-cir {
+  @include size(50%);
+  background-color: $gray;
+  border-radius: $circle;
+  position: absolute;
+  margin: auto;
+  top: 25%;
+  left: 25%;
+  z-index: 15;
+}
+.controls-container {
+  position: absolute;
+  @include size(92%);
+  background-color: $white;
+  border-radius: $circle;
+  border: 6px solid $gray;
+  margin: auto;
+  top: 4%;
+  left: 4%;
+  z-index: 10;
+  text-align: center;
+}
+@include media-breakpoint-down(sm) {
+  .wrapper {
+    @include scale(0.55);
+    transform-origin: 0 0;
+    left: 7%;
+  }
+}

@@ -8,3 +8,11 @@ body {
     color: $body-color;
   }
 }
+
+.center-cir {
+  h1 {
+    @include font-size(56px);
+    font-family: $teko;
+    line-height: 1.5;
+  }
+}
