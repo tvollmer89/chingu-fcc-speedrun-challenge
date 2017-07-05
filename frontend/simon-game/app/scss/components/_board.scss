@@ -20,8 +20,12 @@
   border: 10px solid $gray;
   position: absolute;
   z-index: 10;
+  pointer-events: none;
 }
-
+.color-btn.clickable{
+  pointer-events : auto;
+  cursor:pointer;
+}
 .green {
   background-color: $green;
   border-radius: 100% 0 0 0;
@@ -30,7 +34,10 @@
   border-left-width: 5px;
   border-top-width: 5px;
 }
-
+.green.light{
+  // background-color: lighten($green, 15%);
+  background-color: #0CFF20;
+}
 .red {
   background-color: $red;
   border-radius: 0 100% 0 0;
@@ -39,7 +46,10 @@
   border-right-width: 5px;
   border-top-width: 5px;
 }
-
+.red.light{
+  // background-color: lighten($red, 15%);
+  background-color: #FF0C45;
+}
 .yellow {
   background-color: $yellow;
   border-radius: 0 0 0 100%;
@@ -48,7 +58,10 @@
   border-left-width: 5px;
   border-bottom-width: 5px;
 }
-
+.yellow.light{
+  //background-color: lighten($yellow, 15%);
+  background-color: #FFDB0F;
+}
 .blue {
   background-color: $blue;
   border-radius: 0 0 100% 0;
@@ -56,6 +69,10 @@
   left: 50%;
   border-right-width: 5px;
   border-bottom-width: 5px;
+}
+.blue.light{
+  // background-color: lighten($blue, 15%);
+  background-color: #0CB2FF;
 }
 
 .center-cir {
@@ -80,6 +97,129 @@
   z-index: 10;
   text-align: center;
 }
+.controls-container.power-off {
+  .score-box p{
+    color: darken($red, 30%);
+  }
+  .btn{
+    box-shadow:none;
+  }
+}
+.score-box {
+  position: absolute;
+  @include size(25%, 20%);
+  border-radius: $rounded-square;
+  border: 1px solid $gray;
+  background-color: $dark-red;
+  display: block;
+  left: 10%;
+  p {
+    @include rem('font-size', 18px);
+    color: $red;
+    font-family: $pressStart;
+  }
+}
+
+.score-box.off p {
+  color: $dark-red;
+  margin-bottom: 5px;
+}
+
+.game-btn {
+  position: absolute;
+  @include size(25%);
+  display: block;
+  .ctr-label {
+    bottom: -70%;
+  }
+}
+.btn-start {
+  left: 40%;
+}
+.btn-strict {
+  right: 10%;
+}
+.btn{
+  position: absolute;
+  @include size(70%);
+  border-radius: $circle;
+  border: 4px solid $gray;
+  display: block;
+  margin-left: 15%;
+  margin-right: 15%;
+  transition: box-shadow 0.2s ease;
+  //box-shadow: inset 2px 3px 5px 0px rgba(255,255,255, 0.5);
+  &:focus, &:active {
+    outline: none !important;
+  }
+}
+#start {
+  background-color: $green;
+  background-color: rgba(10,214,27,1);
+  background: radial-gradient(ellipse at center,#0ad61b 50%,hsla(0,0%,100%,1) 100%);
+  &:focus {
+    background: radial-gradient(ellipse at center, rgba(10,214,27,1) 50%, rgba(0,0,0,1) 100%);
+  }
+}
+#strict {
+  background-color: $red;
+  background-color: rgba(219,10,59,1);
+
+background: radial-gradient(ellipse at center, rgba(219,10,59,1) 56%, rgba(219,10,59,0.71) 68%, rgba(255,255,255,0.58) 100%);
+  &:focus{
+    background: radial-gradient(ellipse at center,rgba(219,10,59,1) 50%, rgba(0,0,0,1) 100%);
+  }
+}
+#light {
+  @include size(18%);
+  border-radius: $circle;
+  right: 0%;
+  position: absolute;
+  background-color: $dark-red;
+  border: 2px solid $gray;
+}
+#light.on {
+  background-color:$red;
+}
+.ctr-label {
+  @include size(100%);
+  text-align: center;
+  position: absolute;
+  display: block;
+  bottom: -25%;
+}
+
+.power {
+  position: absolute;
+  @include size(100%, 20%);
+  display: block;
+  bottom: 5%;
+  h4{
+    display: inline-block;
+    margin: 0 4%;
+  }
+  #switch-box {
+    @include size(20%, 50%);
+    background-color: $gray;
+    display: inline-block;
+    position: relative;
+    top: 10%;
+    border: 4px solid $gray;
+    #switch {
+      position: absolute;
+      @include size(50%, 100%);
+      background-color: $blue;
+      left: 0%;
+      transition: left 0.2s ease;
+      @include rem('font-size', 11px);
+      cursor: default;
+    }
+    #switch.on {
+      left: 50%;
+    }
+  }
+}
+
 @include media-breakpoint-down(sm) {
   .wrapper {
     @include scale(0.55);

@@ -1,18 +1,23 @@
 body {
-  @include font-size(16px);
+  @include rem('font-size', 16px);
   font-family: $font-family-base;
   font-size: $font-size-base;
   font-weight: $font-weight-base;
+  font-family: $font-family-base;
   h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
-    font-family: $font-family-base;
+
     color: $body-color;
+  }
+  h1 {
+    @include rem('font-size', 40px);
   }
 }
 
 .center-cir {
+  font-family: $teko;
   h1 {
-    @include font-size(56px);
-    font-family: $teko;
+    @include rem('font-size', 42px);
+
     line-height: 1.5;
   }
 }
