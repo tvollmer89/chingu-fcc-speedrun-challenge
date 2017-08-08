@@ -1,36 +1,40 @@
 $('#start').click(function(){
-  console.log('Start the game');
+  game.active = true;
+  game.locked = true;
+  updateLevelDisplay();
+  game.genSequence();
+  $('.btn').prop('disabled', true);
+  game.dTimer = setTimeout(displaySequence(), 2000);
 });
 
 $('#switch').click(function() {
   //turn off
   if($(this).hasClass('on')){
-    game.reset;
     $('#light').toggleClass("on", false);
+    $('.btn').prop('disabled', true);
+    game.reset();
+  } else{
+    $('.btn').prop('disabled', false);
   }
+  //turn on and start game
   $(this).toggleClass("on");
   $('.controls-container').toggleClass("power-off");
-  $('.btn').prop('disabled', function(i, v) { return !v; });
+  game.init();
   /**
    * need to toogle this when not player's turn here is only temporary
    */
-  $('.color-btn').toggleClass('clickable');
 });
 
 $('#strict').click(function() {
   $('#light').toggleClass("on");
+  game.strict = (game.strict === true)?false: true;
+  console.log(game);
 });
 
 $('.color-btn').click(function(e) {
-  $(this).addClass('light');
   let c = e.target.id;
-  let audio = document.getElementById(`audio-${c}`);
-  audio.play();
-  /**
-
-    TODO:
-    - remove '.light' class when audio is finished playing
-
-   */
-
-})
+  playerMove(c);
+  game.locked = true;
+  $('.color-btn').toggleClass('clickable', true);
+  //game.erMessage("!!");
+});

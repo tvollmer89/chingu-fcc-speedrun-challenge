@@ -4,7 +4,7 @@ var browserSync = require('browser-sync').create();
 var useref = require('gulp-useref');
 var uglify = require('gulp-uglify');
 var gulpIf = require('gulp-if');
-var cssnano = require('gulp-cssnano');
+var cleanCSS = require('gulp-clean-css');
 var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache');
 var del = require('del');
@@ -13,6 +13,9 @@ var postcss      = require('gulp-postcss');
 var autoprefixer = require('gulp-autoprefixer');
 var lazypipe = require('lazypipe');
 var sourcemaps   = require('gulp-sourcemaps');
+var babel = require("gulp-babel");
+var plumber = require('gulp-plumber');
+var concat = require("gulp-concat");
 
 //Broswer sync root folder
 gulp.task('browserSync', function() {
@@ -31,7 +34,6 @@ gulp.task('sass', function () {
       browsers: ['last 2 versions'],
       cascade: false
     }))
-    .pipe(cssnano())
     // .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest('app/css/'))
     .pipe(browserSync.reload({
@@ -39,13 +41,37 @@ gulp.task('sass', function () {
     }))
 });
 
+gulp.task('minify-css',() => {
+  return gulp.src('app/css/*.css')
+    .pipe(sourcemaps.init())
+    .pipe(cleanCSS())
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest('dist/css'));
+});
+
+gulp.task('js', () => {
+  return gulp.src('app/js/**/*.js')
+    .pipe(concat('main.js'))
+    .pipe(babel({ presets: ['es2015', 'es2017'] }))
+    .pipe(uglify())
+    .pipe(gulp.dest('dist/js'))
+    .pipe(browserSync.reload({
+      stream: true
+    }))
+});
+
+gulp.task('html', () => {
+  return gulp.src('app/*.html')
+    .pipe(gulp.dest('dist'))
+});
+
 //concat and minify js/css files
 gulp.task('useref', function(){
   return gulp.src('app/*.html')
     .pipe(useref({}, lazypipe().pipe(sourcemaps.init, { loadMaps: true })))
-    .pipe(gulpIf('app/*.js', uglify()))
+    //.pipe(gulpIf('app/*.js', uglify()))
     // Minifies only if it's a CSS file
-    .pipe(gulpIf('app/*.css', cssnano()))
+    //.pipe('app/css/*.css', cssnano())
     .pipe(sourcemaps.write('maps'))
     .pipe(gulp.dest('dist'))
 });
@@ -79,6 +105,7 @@ return cache.clearAll(callback)
 // Gulp watch syntax to run after browserSync and sass
 gulp.task('watch', ['browserSync', 'sass'], function (){
   gulp.watch('app/scss/**/*.scss', ['sass']);
+  gulp.watch('app/js/**/*.js', ['js']);
   // Reloads the browser whenever HTML or JS files change
   gulp.watch('app/*.css', browserSync.reload);
   gulp.watch('app/*.html', browserSync.reload);
@@ -86,20 +113,11 @@ gulp.task('watch', ['browserSync', 'sass'], function (){
 })
 
 /*
-Build when fonts are in folder
- */
-// gulp.task('build', function (callback) {
-//   runSequence('clean:dist',
-//     ['sass', 'useref', 'images', 'fonts'],
-//     callback
-//   )
-// })
-/*
   Build when fonts are linked
  */
 gulp.task('build', function (callback) {
   runSequence('clean:dist',
-    ['sass', 'useref', 'images'],
+    ['sass', 'js', 'minify-css', 'useref', 'images'],
     callback
   )
 })

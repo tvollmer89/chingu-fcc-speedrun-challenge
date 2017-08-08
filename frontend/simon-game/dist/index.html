@@ -13,7 +13,9 @@
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-  <link rel="stylesheet" href="css/style.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+
 </head>
 
 <body>
@@ -45,18 +47,48 @@
       <div class='row'>
         <div class="wrapper">
           <div id="game">
-            <div class="color-btn green" id="1"></div>
-            <div class="color-btn red" id="2"></div>
+            <div class="color-btn green" id="g"></div>
+            <div class="color-btn red" id="r"></div>
             <div class="center-cir">
-              <div class="controls-container">
-                <h1>SIMON&reg;</h1>
+              <div class="controls-container power-off">
+                <h1>Simon&reg;</h1>
+                <div class="score-box">
+                  <div class="ctr-label">
+                    <p id="score">--</p>
+                    <h4>COUNT</h4>
+                  </div>
+                </div>
+                <div class="game-btn btn-start">
+                  <button id="start" class="btn" disabled></button>
+                  <div class="ctr-label">
+                    <h4>START</h4>
+                  </div>
+                </div>
+                <div class="game-btn btn-strict">
+                  <button id="strict" class="btn" disabled></button>
+                  <div class="ctr-label">
+                    <h4>STRICT</h4>
+                  </div>
+                  <div id="light"></div>
+                </div>
+                <div class="power">
+                  <h4>OFF</h4>
+                  <div id="switch-box">
+                    <div id="switch">||</div>
+                  </div>
+                  <h4>ON</h4>
+                </div>
               </div>
             </div>
-            <div class="color-btn yellow" id="3"></div>
-            <div class="color-btn blue" id="4"></div>
+            <div class="color-btn yellow" id="y"></div>
+            <div class="color-btn blue" id="b"></div>
           </div>
         </div>
       </div>
+      <audio id="audio-g" src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3" ></audio>
+      <audio id="audio-r" src="https://s3.amazonaws.com/freecodecamp/simonSound2.mp3" ></audio>
+      <audio id="audio-y" src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3" ></audio>
+      <audio id="audio-b" src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3" ></audio>
     </div>
 
 <!--     <footer class="footer">
