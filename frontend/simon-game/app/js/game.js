@@ -2,8 +2,6 @@
  *  creting the game object
  *  @type {Object}
  */
-let game = {};
-
 game.init = function() {
   this.level = 1;
   this.turn = 0;

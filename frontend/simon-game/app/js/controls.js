@@ -1,3 +1,10 @@
+/** Event Listeners */
+
+/**
+ * Start the game functino
+ * @param  {e} ){               game.active true
+ * @return {null}     should
+ */
 $('#start').click(function(){
   game.active = true;
   game.locked = true;

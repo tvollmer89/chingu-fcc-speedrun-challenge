@@ -1,4 +1,24 @@
 /**
+ * Check Javacript30 Day 13 on how to use this for time interval
+ *
+ **/
+function debounce(func, wait = 20, immediate = true) {
+  var timeout;
+  return function() {
+    var context = this, args = arguments;
+    var later = function() {
+      timeout = null;
+      if (!immediate) func.apply(context, args);
+    };
+    var callNow = immediate && !timeout;
+    clearTimeout(timeout);
+    timeout = setTimeout(later, wait);
+    if (callNow) func.apply(context, args);
+  };
+};
+
+
+/**
  *  Trigger sound and color change when button computer or user
  *  triggers a color
  *  @param  string   color [Color button ID]
@@ -36,7 +56,7 @@ function displaySequence(){
  */
 function updateLevelDisplay(){
   let l = ("00" + game.level).slice(-2);
-  document.getElementById("score").innerHTML = l;
+  scoreBox.innerHTML = l;
 }
 
 function playerMove(color){
