@@ -9,13 +9,21 @@ game.init = function() {
   this.strict = false;
   this.sequence = [];
   this.active = false; // false until player presses start
-  this.locked = true;
 }
 
 game.reset = function(){
   this.init();
   document.getElementById("score").innerHTML = "--";
 }
+
+game.locked = function(t){
+  if(t){
+    $('.btn').prop('disabled', true);
+  } else {
+    $('.btn').prop('disabled', false);
+  }
+};
+
 /**
  *  Generate the computer's planned sequence
  *  @return {[type]} [description]
@@ -56,6 +64,7 @@ game.erMessage = function(msg){
   };
   let count = 0;
   sBox();
+  /** fisx */
   game.erInterval = setInterval(function(){
     sBox();
     count++;

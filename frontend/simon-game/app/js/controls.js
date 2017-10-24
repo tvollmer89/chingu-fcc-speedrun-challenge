@@ -7,10 +7,10 @@
  */
 $('#start').click(function(){
   game.active = true;
-  game.locked = true;
+  game.locked(true);
   updateLevelDisplay();
   game.genSequence();
-  $('.btn').prop('disabled', true);
+  // $('.btn').prop('disabled', true);
   game.dTimer = setTimeout(displaySequence(), 2000);
 });
 
@@ -18,10 +18,12 @@ $('#switch').click(function() {
   //turn off
   if($(this).hasClass('on')){
     $('#light').toggleClass("on", false);
-    $('.btn').prop('disabled', true);
+    // $('.btn').prop('disabled', true);
+    game.locked(true);
     game.reset();
   } else{
-    $('.btn').prop('disabled', false);
+    // $('.btn').prop('disabled', false);
+    game.locked(false);
   }
   //turn on and start game
   $(this).toggleClass("on");
